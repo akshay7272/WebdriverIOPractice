@@ -24,7 +24,8 @@ exports.config = {
         // './test/specs/**/*.js'
         // './test/specs/BasicLearningTest.js'
         // './test/specs/FunctionalScenerios.js'
-           './test/specs/HandlingWindows&Frames.js'
+        //    './test/specs/HandlingWindows&Frames.js'
+         './test/specs/EndToEndFunctionalTesting1.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -53,8 +54,24 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
+        maxInstances: 1,
         browserName: 'chrome',
-      }],      
+        acceptInsecureCerts: true,
+        'goog:chromeOptions': {
+          args: [
+            '--start-maximized',
+            '--disable-infobars',
+            '--disable-popup-blocking',
+            '--disable-notifications',
+            '--no-default-browser-check',
+            '--disable-extensions'
+          ],
+          prefs: {
+            'credentials_enable_service': false,
+            'profile.password_manager_enabled': false
+          }
+        }
+      }],  
 
     //
     // ===================
