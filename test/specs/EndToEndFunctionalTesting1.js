@@ -1,73 +1,84 @@
 import { expect as chaiExpect } from "chai";
-describe("EndToEndFunctionalTesting1 WebdriverIO", async () => {
-  it("Login Success Functionality", async () => {
+
+describe("EndToEndFunctionalTesting1 WebdriverIO", () => {
+  it("Login Success & Add to cart + Comparing Total of cart items", async () => {
     await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
-    // console.log('Title of the Website',await browser.getTitle());
     await $("#username").setValue("rahulshettyacademy");
     await $("#password").setValue("learning");
+
     const radioButtons = await $$(".customradio");
     await radioButtons[1].$("input").click();
-    await $(".modal-body");
-    await $("//button[@id='okayBtn']").click();
+
+    const modal = await $(".modal-body");
+    await modal.waitForExist({ timeout: 5000 });
+    await $("#okayBtn").click();
+
     const selectEle = await $("select.form-control");
     await selectEle.selectByIndex(1);
-    // await selectEle.selectByAttribute('value','stud')
-    await chaiExpect(await selectEle.getValue()).to.equal("teach");
-    // await selectEle.selectByVisibleText('Consultant')
+    chaiExpect(await selectEle.getValue()).to.equal("teach");
+
     await $("#terms").click();
     await $("#signInBtn").click();
+    await browser.keys(['Escape']);
+
     const button = await $(".btn-primary");
-    await expect(button).toHaveAttr(
-      "class",
-      expect.stringContaining("btn-primary")
-    );
-
-    //Step2 - Gathering Product Info and clicking on Nokia Edge
-    const Products = ['Samsung Note 8', 'Nokia Edge']
-    const productsData = await $$(".card.h-100"); // Corrected selector
+    await button.waitForExist({ timeout: 5000 });
+    await expect(button).toHaveAttr("class", expect.stringContaining("btn-primary"));
+    await browser.keys(['Escape']);
+    const Products = ["Samsung Note 8", "Nokia Edge"];
+    const productsData = await $$(".card.h-100");
     console.log("Total products found:", productsData.length);
+    await browser.keys(['Escape']);
 
-    for (let i = 0; i < productsData.length; i++) {
-        const productCard = productsData[i];
-      
-        // Get the product name from the anchor tag inside card-body
-        const productNameElement = await productCard.$(".card-body a");
-        const productName = await productNameElement.getText();
-      
-        console.log(`Product ${i + 1}: ${productName}`);
-        if(Products.includes(productName)) {
-            const buttonAddToCart = await productCard.$(".card-footer button");
-            await buttonAddToCart.click();
-        }
-      
-        // if (productName === "Nokia Edge") {
-        //   const buttonAddToCart = await productCard.$(".card-footer button");
-        //   await buttonAddToCart.click();
-        //   break; // Optional: stop loop once added
-        // }
-
-
+    for (const productCard of productsData) {
+      const productNameElement = await productCard.$(".card-body .card-title a");
+      const productName = await productNameElement.getText();
+      console.log(`Found product: ${productName}`);
+      await browser.keys(['Escape']);
+      if (Products.includes(productName)) {
+        const buttonAddTo = await productCard.$(".card-footer button");
+        await buttonAddTo.waitForClickable({ timeout: 5000 });
+        await buttonAddTo.click();
+        await browser.keys(['Escape']);
       }
-    await $('.btn-primary').click()
-    // await browser.pause(3000)
-    // const checkProductPresence = $$('.media .media-body h4 a')
-    
-    // const checkResult = await (checkProductPresence.map(async(value)=>await value.getText()))
-    // await browser.pause(3000)
-    // await console.log(checkResult,'checks')
-    // await chaiExpect(await Products).to.deep.equal(await checkResult)
-
-    const productPrices = await $$('//tr/td[4]/strong')
-    // const Total= await Promise.all(await productPrices.map(async(productPrice)=>parseInt((await productPrice.getText()).split('.').trim()))).reduce((acc,price)=>acc+price,0);
-    const Total = await productPrices.map(async el => await el.getText())
-    console.log(await Total,'Total Price')
-    const TrimmedTotal = Total.split(".")
-    console.log(await TrimmedTotal,'Total Price2')
-
+    }
    
+    await $(".nav-link.btn.btn-primary").click()
+    await browser.keys(['Escape']); // Checkout
+    // await cart.waitForClickable({ timeout: 5000 });
+    // await cart.click()
+
+    // Wait for cart table
+    const productPrices = await $$("//tr/td[4]/strong");
    
-    // await browser.pause(30000)
-    // const productText = await checkProductPresence.getText()
-    // chaiExpect(productText).to.deep.equal('Nokia Edge')
+    let totalPrice = 0;
+    for (const element of productPrices) {
+      const eleText = await element.getText(); 
+      const cleaned = eleText.replace(/[^\d]/g, "");
+      const numericValue = parseInt(cleaned, 10);
+      totalPrice += numericValue;
+    }
+
+    const FinalOutcome = await $("td[class='text-right'] h3 strong");
+    await FinalOutcome.waitForExist({ timeout: 5000 });
+    const finalText = await FinalOutcome.getText();
+    const cleaned2 = finalText.replace(/[^\d]/g, "");
+    const numericValue2 = parseInt(cleaned2, 10);
+
+    console.log(`Calculated total: ${totalPrice}, Displayed total: ${numericValue2}`);
+    await chaiExpect(totalPrice).to.equal(numericValue2);
+    await $('.btn-success').click()
+    await browser.keys(['Escape']);
+    await $('#country').setValue('ind')
+    // await browser.pause(3000)
+    await $('.lds-ellipsis').waitForExist({reverse:true})
+    await $("//a[normalize-space()='India']").click()
+    // await $('#checkbox2').click()
+    await $("input[value='Purchase']").click()
+    const assertSuccess = await $('.alert-success strong')
+    const dataSucess = await assertSuccess.getText()
+    console.log(dataSucess,'ddd')
+    chaiExpect(dataSucess).to.deep.equal('Success!')
+    // await browser.pause(3000)
   });
 });

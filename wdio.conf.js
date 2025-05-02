@@ -25,7 +25,8 @@ exports.config = {
         // './test/specs/BasicLearningTest.js'
         // './test/specs/FunctionalScenerios.js'
         //    './test/specs/HandlingWindows&Frames.js'
-         './test/specs/EndToEndFunctionalTesting1.js'
+        //  './test/specs/EndToEndFunctionalTesting1.js'
+        './test/specs/TestLoginPO.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -54,24 +55,31 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        maxInstances: 1,
-        browserName: 'chrome',
-        acceptInsecureCerts: true,
-        'goog:chromeOptions': {
-          args: [
-            '--start-maximized',
-            '--disable-infobars',
-            '--disable-popup-blocking',
-            '--disable-notifications',
-            '--no-default-browser-check',
-            '--disable-extensions'
-          ],
-          prefs: {
-            'credentials_enable_service': false,
-            'profile.password_manager_enabled': false
-          }
+      maxInstances: 1,
+      browserName: 'chrome',
+      acceptInsecureCerts: true,
+      'goog:chromeOptions': {
+        args: [
+          // '--headless=new',
+          // '--incognito',
+          '--start-maximized',
+          '--disable-infobars',
+          '--disable-popup-blocking',
+          '--disable-notifications',
+          '--no-default-browser-check',
+          '--disable-extensions',
+          '--disable-translate',
+          '--disable-save-password-bubble',
+          '--disable-password-bubble', // ✅ THIS IS THE CRUCIAL FLAG
+          '--disable-autofill-keyboard-accessory-view',
+        ],
+        excludeSwitches: ['enable-automation', 'load-extension'],
+        prefs: {
+          'credentials_enable_service': false,
+          'profile.password_manager_enabled': false
         }
-      }],  
+      }
+    }],    
 
     //
     // ===================
