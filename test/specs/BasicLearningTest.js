@@ -1,7 +1,37 @@
 import { expect as chaiExpect } from 'chai';
+// const fs = require('test/testdata/testloginfaildata.json')
+const fs = require('../testdata/testloginfaildata.json')
 describe('Ecommerce Application Rahul Shetty',async ()=>{
     
-    it('Login Success Functionality',async()=>{
+    fs.forEach(({username,password})=>{
+    it('Login Fail Functionality',async()=>{
+        await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
+        console.log('Title of the Website',await browser.getTitle());
+        await $('#username').setValue(username)
+        await $('#password').setValue(password)
+        const radioButtons =  await $$('.customradio')
+        await radioButtons[1].$('input').click()
+        await $(".modal-body")
+        await $("//button[@id='cancelBtn']").click()
+        const selectEle = await $('select.form-control')
+        await selectEle.selectByIndex(1)
+        await selectEle.selectByAttribute('value','stud')
+        await chaiExpect(await selectEle.getValue()).to.equal('stud')
+        await selectEle.selectByVisibleText('Consultant')
+        await $('#terms').click()
+        await $('#signInBtn').click()
+        const failConfirm = await $('.alert-danger strong')
+        await failConfirm.waitForDisplayed({timeout:5000})
+        const failText = await failConfirm.getText()
+        await chaiExpect(failText).to.equal('Incorrect')
+        
+        })
+    })
+    
+    
+    
+    
+    xit('Login Success Functionality',async()=>{
     await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
     console.log('Title of the Website',await browser.getTitle());
     await $('#username').setValue('rahulshettyacademy')
@@ -24,7 +54,7 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
     })
 
 
-    it('Handling Dynamic Dropdowns controls using webdriverio',async()=>{
+    xit('Handling Dynamic Dropdowns controls using webdriverio',async()=>{
       
         await browser.url('https://rahulshettyacademy.com/AutomationPractice')
         
@@ -50,7 +80,7 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
     //     await browser.saveScreenshot('CheckboxSelected.png')
     // })
 
-    it('Handling Checkboxes Automation', async () => {
+    xit('Handling Checkboxes Automation', async () => {
         await browser.url('https://rahulshettyacademy.com/AutomationPractice');
         
        

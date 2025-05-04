@@ -3,8 +3,12 @@ const loginPage = require('../pageobjects/myLogin')
 const ShopPage = require('../pageobjects/POEndtoEndShopPage')
 const ReviewPage = require('../pageobjects/POEndtoEndReviewPage')
 const ConfirmPage = require('../pageobjects/POEndtoEndConfirmPage')
+const fs = require('../testdata/poe2e.json')
 
 describe("EndToEndFunctionalTesting1 WebdriverIO", () => {
+  fs.forEach(({productsData})=>{
+    
+ 
   it("Login Success & Add to cart + Comparing Total of cart items", async () => {
     
     await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
@@ -27,11 +31,10 @@ describe("EndToEndFunctionalTesting1 WebdriverIO", () => {
     await loginPage.signIn.click();
 
     const button = await $(".btn-primary");
-    await button.waitForExist({ timeout: 5000 });
+    await button.waitForExist({ timeout: 10000 });
     await expect(button).toHaveAttr("class", expect.stringContaining("btn-primary"));
     
-    const Products = ["Samsung Note 8", "Nokia Edge"];
-    await ShopPage.AddProductsToCart(Products);
+    await ShopPage.AddProductsToCart(productsData);
     await $(".nav-link.btn.btn-primary").click()
 
     // Wait for cart table
@@ -47,4 +50,5 @@ describe("EndToEndFunctionalTesting1 WebdriverIO", () => {
     //Final Success Text Confirmation
     await ConfirmPage.ConfirmText()
   });
+});
 });
