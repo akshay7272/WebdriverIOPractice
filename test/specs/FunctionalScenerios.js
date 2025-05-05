@@ -2,7 +2,7 @@
 import { expect as chaiExpect } from 'chai';
 describe('Functional Scenarios Suite',async()=>{
     it('regression-Scrolling on MouseHover',async()=>{
-        await browser.url('https://rahulshettyacademy.com/AutomationPractice')
+        await browser.url('/AutomationPractice')
         await $('#mousehover').scrollIntoView()
         
         await $('#mousehover').moveTo()
@@ -27,7 +27,7 @@ describe('Functional Scenarios Suite',async()=>{
     });
 
     it('Web Table Sort Validations',async ()=>{
-        await browser.url('https://rahulshettyacademy.com/seleniumPractise/#/offers')
+        await browser.url('/seleniumPractise/#/offers')
         await $('th:nth-child(1)').click()
         const veggieLocator2 = await $$('tr td:nth-child(1)')
         const veggieNames2 = await veggieLocator2.map(veggie=> veggie.getText())
@@ -38,7 +38,7 @@ describe('Functional Scenarios Suite',async()=>{
         chaiExpect(veggieNames2).to.deep.equal(sortedVeggie)    
     })
     it('Web Search Functionality',async()=>{
-        await browser.url('https://rahulshettyacademy.com/seleniumPractise/#/offers')
+        await browser.url('/seleniumPractise/#/offers')
         await $('#search-field').setValue('tom')
         const veggieLocator = await $$('tr td:nth-child(1)')
         expect(veggieLocator).toBeElementsArrayOfSize({eq:1})

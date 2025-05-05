@@ -4,8 +4,8 @@ const fs = require('../testdata/testloginfaildata.json')
 describe('Ecommerce Application Rahul Shetty',async ()=>{
     
     fs.forEach(({username,password})=>{
-    it('smoke-Login Fail Functionality',async()=>{
-        await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
+    it('Regression-Login Fail Functionality',async()=>{
+        await browser.url('/loginpagePractise/')
         console.log('Title of the Website',await browser.getTitle());
         await $('#username').setValue(username)
         await $('#password').setValue(password)
@@ -31,8 +31,8 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
     
     
     
-    it('Login Success Functionality',async()=>{
-    await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
+    it('smoke-Login Success Functionality',async()=>{
+    await browser.url('/loginpagePractise/')
     console.log('Title of the Website',await browser.getTitle());
     await $('#username').setValue('rahulshettyacademy')
     await $('#password').setValue('learning')
@@ -56,7 +56,7 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
 
     it('Handling Dynamic Dropdowns controls using webdriverio',async()=>{
       
-        await browser.url('https://rahulshettyacademy.com/AutomationPractice')
+        await browser.url('/AutomationPractice')
         
         await $('#autocomplete').setValue('ind')
         // await browser.pause(3000)
@@ -81,7 +81,7 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
     // })
 
     it('Handling Checkboxes Automation', async () => {
-        await browser.url('https://rahulshettyacademy.com/AutomationPractice');
+        await browser.url('/AutomationPractice');
         
        
         const CheckBoxes = await $$("input[type='checkbox']");

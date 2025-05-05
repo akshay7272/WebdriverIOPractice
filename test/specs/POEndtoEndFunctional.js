@@ -11,7 +11,7 @@ describe("EndToEndFunctionalTesting1 WebdriverIO", () => {
  
   it("Login Success & Add to cart + Comparing Total of cart items", async () => {
     
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
     await loginPage.userName.setValue("rahulshettyacademy");
     await loginPage.passWord.setValue("learning");
    

@@ -2,7 +2,7 @@ import { expect as chaiExpect } from "chai";
 
 describe("EndToEndFunctionalTesting1 WebdriverIO", () => {
   it("Login Success & Add to cart + Comparing Total of cart items", async () => {
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
     await $("#username").setValue("rahulshettyacademy");
     await $("#password").setValue("learning");
 

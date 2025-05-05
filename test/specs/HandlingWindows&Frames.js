@@ -1,7 +1,7 @@
 import { expect as chaiExpect } from 'chai';
 describe('Handling Child Windows And Frames With WebdriverIO',async()=>{
-    it('Child Window Handling',async()=>{
-        await browser.url('https://rahulshettyacademy.com/loginpagePractise')
+    it('Regression-Child Window Handling',async()=>{
+        await browser.url('/loginpagePractise')
         await $('.blinkingText').click()
         //If Links open in new window as per Browser Level/Application Level
         const handles = await browser.getWindowHandles()

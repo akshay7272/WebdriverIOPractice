@@ -3,7 +3,7 @@ import { expect as chaiExpect } from 'chai';
 describe('Ecommerce Application Rahul Shetty',async ()=>{
     
     it('Login Success Functionality',async()=>{
-    await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
+    await browser.url('/loginpagePractise/')
     console.log('Title of the Website',await browser.getTitle());
     await loginPage.Login('rahulshettyacademy','learning')
     // await expect($('.btn-primary')).toHaveAttr('class', expect.stringContaining('btn-primary'));
