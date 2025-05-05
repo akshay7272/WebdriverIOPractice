@@ -79,6 +79,5 @@ describe("EndToEndFunctionalTesting1 WebdriverIO", () => {
     const dataSucess = await assertSuccess.getText()
     console.log(dataSucess,'ddd')
     chaiExpect(dataSucess).to.deep.equal('Success!')
-    // await browser.pause(3000)
   });
 });
