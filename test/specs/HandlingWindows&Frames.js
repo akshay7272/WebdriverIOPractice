@@ -23,7 +23,4 @@ describe('Handling Child Windows And Frames With WebdriverIO',async()=>{
         
     })
 
-    xit('Handling Frames',async()=>{
-
-    })
 })

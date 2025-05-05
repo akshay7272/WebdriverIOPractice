@@ -52,7 +52,7 @@ exports.config = {
     maxInstances: 10,
     //
    suites: {
-        endToEndTest: ['test/specs/EndToEndFunctionalTesting1.js'],
+        endToEndTest: ['test/specs/EndToEndFunctionalTesting1.js','test/specs/HandlingWindows&Frames.js'],
         BasicLearning: ['test/specs/BasicLearningTest.js']
    },
 
