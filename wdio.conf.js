@@ -21,13 +21,13 @@ exports.config = {
     // of the config file unless it's absolute.
     // './test/specs/**/*.js'
     specs: [
-        // './test/specs/**/*.js'
-        // './test/specs/BasicLearningTest.js'
-        // './test/specs/FunctionalScenerios.js'
-        //    './test/specs/HandlingWindows&Frames.js'
-        //  './test/specs/EndToEndFunctionalTesting1.js'
-        // './test/specs/TestLoginPO.js'
-        './test/specs/POEndtoEndFunctional.js'
+        './test/specs/**/*.js'
+        // './test/specs/BasicLearningTest.js',
+        // './test/specs/FunctionalScenerios.js',
+        //    './test/specs/HandlingWindows&Frames.js',
+        //  './test/specs/EndToEndFunctionalTesting1.js',
+        // './test/specs/TestLoginPO.js',
+        // './test/specs/POEndtoEndFunctional.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -87,7 +87,7 @@ exports.config = {
         browserName: 'MicrosoftEdge',
         'ms:edgeOptions': {
           args: [
-            // '--headless=new', 
+            '--headless=new', 
             '--start-maximized',
             '--disable-infobars',
             '--disable-popup-blocking',

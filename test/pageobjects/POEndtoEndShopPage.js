@@ -12,6 +12,7 @@ class Shop{
             if (products.includes(productName)) {
               const buttonAddTo = await productCard.$(".card-footer button");
               await buttonAddTo.waitForClickable({ timeout: 5000 });
+              console.log(await productName,'t5t5')
               await buttonAddTo.click();
               
             }

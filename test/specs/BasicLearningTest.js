@@ -4,7 +4,7 @@ const fs = require('../testdata/testloginfaildata.json')
 describe('Ecommerce Application Rahul Shetty',async ()=>{
     
     fs.forEach(({username,password})=>{
-    it('Login Fail Functionality',async()=>{
+    it('smoke-Login Fail Functionality',async()=>{
         await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
         console.log('Title of the Website',await browser.getTitle());
         await $('#username').setValue(username)
@@ -31,7 +31,7 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
     
     
     
-    xit('Login Success Functionality',async()=>{
+    it('Login Success Functionality',async()=>{
     await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
     console.log('Title of the Website',await browser.getTitle());
     await $('#username').setValue('rahulshettyacademy')
@@ -54,7 +54,7 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
     })
 
 
-    xit('Handling Dynamic Dropdowns controls using webdriverio',async()=>{
+    it('Handling Dynamic Dropdowns controls using webdriverio',async()=>{
       
         await browser.url('https://rahulshettyacademy.com/AutomationPractice')
         
@@ -80,7 +80,7 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
     //     await browser.saveScreenshot('CheckboxSelected.png')
     // })
 
-    xit('Handling Checkboxes Automation', async () => {
+    it('Handling Checkboxes Automation', async () => {
         await browser.url('https://rahulshettyacademy.com/AutomationPractice');
         
        

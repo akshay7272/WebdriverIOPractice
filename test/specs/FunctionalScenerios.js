@@ -1,7 +1,7 @@
 
 import { expect as chaiExpect } from 'chai';
 describe('Functional Scenarios Suite',async()=>{
-    xit('Scrolling on MouseHover',async()=>{
+    it('regression-Scrolling on MouseHover',async()=>{
         await browser.url('https://rahulshettyacademy.com/AutomationPractice')
         await $('#mousehover').scrollIntoView()
         
@@ -10,7 +10,7 @@ describe('Functional Scenarios Suite',async()=>{
         await $('=Top').click()
        
     })
-    xit('Javascript Alerts Handling', async() => {
+    it('Javascript Alerts Handling', async() => {
         await browser.url('https://only-testing-blog.blogspot.com/2014/09/selectable.html')
        
     
@@ -26,7 +26,7 @@ describe('Functional Scenarios Suite',async()=>{
         //see the problem ASAP
     });
 
-    xit('Web Table Sort Validations',async ()=>{
+    it('Web Table Sort Validations',async ()=>{
         await browser.url('https://rahulshettyacademy.com/seleniumPractise/#/offers')
         await $('th:nth-child(1)').click()
         const veggieLocator2 = await $$('tr td:nth-child(1)')
@@ -37,7 +37,7 @@ describe('Functional Scenarios Suite',async()=>{
         console.log(await sortedVeggie,'veggie B')
         chaiExpect(veggieNames2).to.deep.equal(sortedVeggie)    
     })
-    xit('Web Search Functionality',async()=>{
+    it('Web Search Functionality',async()=>{
         await browser.url('https://rahulshettyacademy.com/seleniumPractise/#/offers')
         await $('#search-field').setValue('tom')
         const veggieLocator = await $$('tr td:nth-child(1)')

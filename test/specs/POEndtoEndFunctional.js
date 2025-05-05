@@ -37,9 +37,10 @@ describe("EndToEndFunctionalTesting1 WebdriverIO", () => {
     await ShopPage.AddProductsToCart(productsData);
     await $(".nav-link.btn.btn-primary").click()
 
+    // await browser.pause(5000)
+
     // Wait for cart table
     await ReviewPage.cartTotal()
-    await ReviewPage.finalOutcome()
     const { totalPrices, numericValue2 } = await ReviewPage.finalOutcome();
     chaiExpect(totalPrices).to.equal(numericValue2);
     await $('.btn-success').click()

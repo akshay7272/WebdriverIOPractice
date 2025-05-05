@@ -8,7 +8,7 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
     await loginPage.Login('rahulshettyacademy','learning')
     // await expect($('.btn-primary')).toHaveAttr('class', expect.stringContaining('btn-primary'));
     const test = await loginPage.shopText.getText()
-    await chaiExpect(test).to.equal('ProtoCommerce Homes')
+    await chaiExpect(test).to.equal('ProtoCommerce Home')
     })
 
 })

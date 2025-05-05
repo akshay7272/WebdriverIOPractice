@@ -7,7 +7,6 @@ class ConfirmPage{
     async ConfirmText() {
       const assertSuccess = await this.SucessMsgElement
           const dataSucess = await assertSuccess.getText()
-          console.log(dataSucess,'ddd')
           chaiExpect(dataSucess).to.deep.equal('Success!')
     }
 }
