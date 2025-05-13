@@ -53,6 +53,30 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
     await chaiExpect(test).to.equal('ProtoCommerce Home')
     })
 
+// Flaky Test-- Failed Sometimes
+    it('Login Success Functionality-- Flaky test means if fails then rerun the tests -- Failed',async function(){
+        this.retries(5)
+        await browser.url('/loginpagePractise/')
+        console.log('Title of the Website',await browser.getTitle());
+        await $('#username').setValue('rahulshettyacademy')
+        await $('#password').setValue('learning')
+        const radioButtons =  await $$('.customradio')
+        await radioButtons[1].$('input').click()
+        await $(".modal-body")
+        await $("//button[@id='cancelBtn']").click()
+        const selectEle = await $('select.form-control')
+        await selectEle.selectByIndex(1)
+        await selectEle.selectByAttribute('value','stud')
+        await chaiExpect(await selectEle.getValue()).to.equal('stud')
+        await selectEle.selectByVisibleText('Consultant')
+        await $('#terms').click()
+        await $('#signInBtn').click()
+        const button = await $('.btn-primary')
+        await expect(button).toHaveAttr('class', expect.stringContaining('btn-primary'));
+        const test = await $("//a[text()='ProtoCommerce Home']").getText()
+        await chaiExpect(test).to.equal('ProtoCommerce Home')
+      })
+
 
     it('Handling Dynamic Dropdowns controls using webdriverio',async()=>{
       
