@@ -55,7 +55,7 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
 
 // Flaky Test-- Failed Sometimes
     it('Login Success Functionality-- Flaky test means if fails then rerun the tests -- Failed',async function(){
-        this.retries(5)
+        this.retries(2)
         await browser.url('/loginpagePractise/')
         console.log('Title of the Website',await browser.getTitle());
         await $('#username').setValue('rahulshettyacademy')
@@ -74,7 +74,7 @@ describe('Ecommerce Application Rahul Shetty',async ()=>{
         const button = await $('.btn-primary')
         await expect(button).toHaveAttr('class', expect.stringContaining('btn-primary'));
         const test = await $("//a[text()='ProtoCommerce Home']").getText()
-        await chaiExpect(test).to.equal('ProtoCommerce Home')
+        await chaiExpect(test).to.equal('ProtoCommerce Homee')
       })
 
 
