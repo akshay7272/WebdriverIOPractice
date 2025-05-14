@@ -31,3 +31,15 @@ Added Allure reporting in WebdriverIO for Project Test Reports.
 
     2.2> allure generate [allure_output_dir] && allure open  --brfore this our system have Java JRE
     2.3> npx allure generate allure-results --clean; npx allure open (Another command if not works)
+
+3> Created Scripts on package.json file to run commands directly using npm run scriptname
+
+3.1>  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "SmokeTests": "npx wdio run ./wdio.conf.js --mochaOpts.grep smoke",
+    "RegressionTests": "npx wdio run ./wdio.conf.js --mochaOpts.grep regression",
+    "GenerateReport": "npx allure generate allure-results --clean",
+    "OpenReport": "npx allure open"
+  },
+
+3.2> If you want to run SmokeTests then simply use --- npm run SmokeTests
