@@ -61,56 +61,57 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    // capabilities: [{
-    //   maxInstances: 1,
-    //   browserName: 'chrome',
-    //   acceptInsecureCerts: true,
-    //   'goog:chromeOptions': {
-    //     args: [
-    //       '--start-maximized',
-    //       '--disable-infobars',
-    //       '--disable-popup-blocking',
-    //       '--disable-notifications',
-    //       '--no-default-browser-check',
-    //       '--disable-extensions',
-    //       '--disable-translate',
-    //       '--disable-autofill-keyboard-accessory-view'
-    //       // ❌ DO NOT use '--incognito' – WebDriver is already incognito
-    //     ],
-    //     excludeSwitches: ['enable-automation', 'load-extension'],
-    //     prefs: {
-    //       'credentials_enable_service': false,
-    //       'profile.password_manager_enabled': false,
-    //       'profile.default_content_setting_values.notifications': 2, // block all notifications
-    //       'profile.default_content_settings.popups': 0
-    //     }
-    //   }
-    // }],
-
-    capabilities: [
-      {
-        maxInstances: 5,
-        browserName: 'MicrosoftEdge',
-        'ms:edgeOptions': {
-          args: [
-            // '--headless=new', 
-            '--start-maximized',
-            '--disable-infobars',
-            '--disable-popup-blocking',
-            '--disable-notifications',
-            '--no-default-browser-check',
-            '--disable-extensions',
-            '--disable-translate',
-            '--disable-save-password-bubble',
-          ],
-          prefs: {
-            'credentials_enable_service': false,
-            'profile.password_manager_enabled': false
-          }
-        },
-        acceptInsecureCerts: true
+    capabilities: [{
+      maxInstances: 1,
+      browserName: 'chrome',
+      acceptInsecureCerts: true,
+      'goog:chromeOptions': {
+        args: [
+          '--headless=new', 
+          '--start-maximized',
+          '--disable-infobars',
+          '--disable-popup-blocking',
+          '--disable-notifications',
+          '--no-default-browser-check',
+          '--disable-extensions',
+          '--disable-translate',
+          '--disable-autofill-keyboard-accessory-view'
+          // ❌ DO NOT use '--incognito' – WebDriver is already incognito
+        ],
+        excludeSwitches: ['enable-automation', 'load-extension'],
+        prefs: {
+          'credentials_enable_service': false,
+          'profile.password_manager_enabled': false,
+          'profile.default_content_setting_values.notifications': 2, // block all notifications
+          'profile.default_content_settings.popups': 0
+        }
       }
-    ],
+    }],
+
+    // capabilities: [
+    //   {
+    //     maxInstances: 5,
+    //     browserName: 'MicrosoftEdge',
+    //     'ms:edgeOptions': {
+    //       args: [
+    //         '--headless=new', 
+    //         '--start-maximized',
+    //         '--disable-infobars',
+    //         '--disable-popup-blocking',
+    //         '--disable-notifications',
+    //         '--no-default-browser-check',
+    //         '--disable-extensions',
+    //         '--disable-translate',
+    //         '--disable-save-password-bubble',
+    //       ],
+    //       prefs: {
+    //         'credentials_enable_service': false,
+    //         'profile.password_manager_enabled': false
+    //       }
+    //     },
+    //     acceptInsecureCerts: true
+    //   }
+    // ],
     
     
       
